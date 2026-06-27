@@ -1,0 +1,8 @@
+#!/bin/bash
+
+python3 scripts/add_rd_comment.py
+
+if [ $? -ne 0 ]; then
+  echo "RD hook failed"
+  exit 1
+fi
