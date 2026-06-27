@@ -2,6 +2,31 @@
 
 Automatically adds an RD-&lt;branch-name> (you can edit RD with any other thing) comment to your source files before each commit.
 
+## Why?
+
+When working on multiple feature branches, it can sometimes be useful to know **which branch originally introduced a particular change** without checking the Git history.
+
+This Git hook automatically inserts a lightweight comment containing the current branch name (prefixed with `RD-`) into modified source files before each commit. The comment acts as an inline reference, making it easier to:
+
+* Identify the feature branch that introduced a change.
+* Simplify code reviews and manual audits.
+* Track work across long-lived branches.
+* Leave a persistent reference that remains visible even when code is copied or viewed outside of Git tools.
+
+For example, while working on the `feature/payment` branch, the hook adds:
+
+```php
+// RD-feature/payment
+```
+
+or, in a Blade template:
+
+```blade
+{{-- RD-feature/payment --}}
+```
+
+The hook is language-aware, avoids duplicate comments, supports multiple programming languages, and can be configured to ignore specific files or directories.
+
 ## Features
 
 * Adds an `RD-<branch-name>` comment before the first modified block in a file.
